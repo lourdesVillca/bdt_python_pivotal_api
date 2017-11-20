@@ -8,7 +8,10 @@ class RequestApi:
         self.token = token
         self.base_endpoint = url
         self.authorizarion = (username, password)
-        self.headers = {'X-TrackerToken': token}
+        self.headers = {'X-TrackerToken': token, "Content-Type":"application/json"}
 
     def execute_request(self, method, end_point, data=None):
+        print(method)
+        print(end_point)
+        print(data)
         return requests.request(method, self.base_endpoint + end_point, headers=self.headers, data=data)
