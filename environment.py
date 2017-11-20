@@ -3,8 +3,7 @@ from utils.api_request import RequestApi
 global generic_data
 global request_api
 
-generic_data = yaml.load(open('../config/config.yml'))
-
+generic_data =yaml.load(open('config/config.yml'))
 
 def before_all(context):
     context.url = generic_data['app']['url']
