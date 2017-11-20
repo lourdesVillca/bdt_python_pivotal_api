@@ -15,6 +15,7 @@ def before_all(context):
     context.request_api = RequestApi(context.token, context.url, context.username, context.password)
 
 
+
 def after_tag(context, tag):
     print("tag ", tag)
     if tag == 'delete_project':
