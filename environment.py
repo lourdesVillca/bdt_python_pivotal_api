@@ -16,7 +16,7 @@ def before_all(context):
 
 
 
-def after_tag(context, tag):
+def before_tag(context, tag):
     print("tag ", tag)
     if tag == 'delete_project':
         project_list = context.request_api.execute_request('get', 'projects')
@@ -24,5 +24,4 @@ def after_tag(context, tag):
             for project in project_list.json():
                 print("delete_url", project['id'])
                 delete_url = 'projects/' + str(project['id'])
-
                 context.request_api.execute_request('delete', delete_url)
