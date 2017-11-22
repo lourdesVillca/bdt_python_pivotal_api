@@ -11,12 +11,12 @@ Feature: As a user to pivotal tracker
     And I save the project id as <project_id>
     Then I expect status code 200
 
-  @smoke, @delete_project
+  @delete_project
   Scenario: Get Projects
     When I send a GET request to projects
     Then I expect status code 200
 
-@delete_project
+  @delete_project
   Scenario: Put Projects
     When I send a PUT request to projects/<project_id>
     """
@@ -24,6 +24,7 @@ Feature: As a user to pivotal tracker
     "name" : "Update-Project"
     }
     """
+    Then I expect status code 200
 
 #   Scenario: Delete Projects
 #    When I send a DELETE request to projects/<project_id>
