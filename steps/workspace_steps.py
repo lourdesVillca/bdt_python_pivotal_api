@@ -1,13 +1,26 @@
+import json
+
 from behave import when
 
 
-@when(u'I send the POST request to (.*)')
+@when(u'I send the {method} request to {end_point}')
 def step_impl(context, method, end_point):
-    print ('ESTOY ENTRANDO AL POST')
-    pass
-    # if context.text:
-    #     project_data = json.loads(context.text)
-    #     context.response = context.request_api.execute_request(method, end_point, data=project_data)
-    #     print(context.response.status_code)
-    # else:
-    #     context.response = context.request_api.execute_request(method, end_point)
+    context.project_name = context.response.json()['name']
+    project_data = json.loads(context.text.replace( context.project_name, str(context.project_id)))
+    context.response = context.request_api.execute_request(method, end_point, data=project_data)
+
+
+@when(u'I save the workspaces id as <workspaces_id>')
+def step_impl(context):
+    context.workspace_id = (context.response.json())['id']
+    print(context.response.status_code)
+    print(context.workspace_id)
+
+
+@when(u'I send {method} request to {end_point}')
+def step_impl(context, method, end_point):
+    end_point = end_point.replace('<workspaces_id>', str(context.workspace_id))
+    project_data = json.loads(context.text.replace(context.project_name, str(context.project_id)))
+    print(end_point)
+    print(project_data)
+    context.response = context.request_api.execute_request(method, end_point, data=project_data)

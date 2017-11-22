@@ -26,3 +26,14 @@ def after_tag(context, tag):
                 delete_url = 'projects/' + str(project['id'])
 
                 context.request_api.execute_request('delete', delete_url)
+
+def after_tag(context, tag):
+    print("tag  workspace ", tag)
+    # if tag == 'delete_workspace':
+    #     project_list = context.request_api.execute_request('get', 'projects')
+    #     if project_list.json():
+    #         for project in project_list.json():
+    #             print("delete_url", project['id'])
+    #             delete_url = 'projects/' + str(project['id'])
+    #
+    #             context.request_api.execute_request('delete', delete_url)
