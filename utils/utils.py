@@ -8,8 +8,8 @@ def convert_table_to_dictionary(table):
         result.append(dict(zip(header, row_data)))
     return result
 
-def map_url(end_point, response):
+def map_url(end_point, context):
     mapped_url = end_point
-    if response.json():
-        mapped_url =re.sub("<.*>", str(response.context.response.json()["id"]), end_point)
+    if hasattr(context, 'project_response'):
+        mapped_url =re.sub("<.*>", str(context.project_response.json()["id"]), end_point)
     return mapped_url

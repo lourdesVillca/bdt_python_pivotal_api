@@ -12,7 +12,7 @@ Feature:
       And I save the project id as <project_id>
     Then I expect status code 200
 
-  @smoke, @delete_project
+  @delete_project
   Scenario: Get Projects
     When I send a GET request to projects
     Then I expect status code 200
@@ -25,6 +25,7 @@ Feature:
     "name" : "Update-Project"
     }
     """
+    Then I expect status code 200
 
   @delete_project
   Scenario: Delete Projects

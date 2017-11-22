@@ -26,5 +26,6 @@ Feature:
 
   @delete_project
   Scenario: Get Stories
-    When I send a GET request to /projects/stories
+    When I send a GET request to /projects/<project_id>/stories
     Then I expect status code 200
+
