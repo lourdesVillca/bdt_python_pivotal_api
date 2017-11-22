@@ -11,6 +11,7 @@ def step_impl(context, method, end_point):
     if context.text:
         project_data = json.loads(context.text)
         context.response = context.request_api.execute_request(method, end_point, data=project_data)
+        print(context.response.status_code)
     else:
         context.response = context.request_api.execute_request(method, end_point)
 
@@ -23,6 +24,8 @@ def step_impl(context, status_code):
 @when(u'I save the project id as <project_id>')
 def step_impl(context):
     context.project_id = (context.response.json())['id']
+    print(context.response.status_code)
+    print( context.project_id)
 
 
 @when(u'I send a (PUT|DELETE) request to (.*)')
