@@ -7,7 +7,7 @@ from utils.utils import map_url
 use_step_matcher("re")
 
 
-@when(u'I send a (.*) request to (.*)')
+@step(u'I send a (.*) request to (.*)')
 def step_impl(context, method, end_point):
     if context.text:
         object_data = json.loads(context.text)
@@ -20,6 +20,6 @@ def step_impl(context, status_code):
     expect(str(context.response.status_code)).to_equal(status_code)
 
 
-@when(u'I save the response as (.*)')
+@step(u'I save the response as (.*)')
 def step_impl(context, var_response):
     exec("context."+var_response+" = context.response")
