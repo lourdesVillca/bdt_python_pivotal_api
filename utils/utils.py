@@ -18,4 +18,5 @@ def map_url(end_point, context):
             mapped_url = re.sub("<story_id>", str(context.story_response.json()["id"]), mapped_url)
         if hasattr(context, 'workspace_response'):
             mapped_url = re.sub("<workspace_id>", str(context.workspace_response.json()["id"]), mapped_url)
+    print(mapped_url)
     return mapped_url
