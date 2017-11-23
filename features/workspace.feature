@@ -8,7 +8,7 @@ Feature: As a user to pivotal tracker
       "name" : "workspace-project01"
     }
     """
-    And I save the project id as <project_id>
+    And I save the response as project_response
     When I send the POST request to my/workspaces
     """
     {
@@ -16,7 +16,7 @@ Feature: As a user to pivotal tracker
       "project_ids":[workspace-project01]
     }
     """
-     And I save the workspaces id as <workspaces_id>
+     And I save the response as workspace
     Then I expect status code 200
 
 

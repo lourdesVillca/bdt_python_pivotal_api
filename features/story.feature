@@ -10,7 +10,7 @@ Feature:
       "name" : "project 01"
     }
     """
-    And I save the project id as <project_id>
+    And I save the response as project_response
     Then I expect status code 200
 
 
@@ -22,6 +22,7 @@ Feature:
       "story_type" : "feature"
     }
     """
+    And I save the response as story_response
     Then I expect status code 200
 
   @delete_project
@@ -29,3 +30,17 @@ Feature:
     When I send a GET request to /projects/<project_id>/stories
     Then I expect status code 200
 
+  @delete_project
+  Scenario: Put Story
+    When I send a PUT request to projects/<project_id>/stories/<story_id>
+    """
+    {
+      "name" : "Story 01 - updated"
+    }
+    """
+    Then I expect status code 200
+
+  @delete_project
+  Scenario: Delete Story
+    When I send a DELETE request to projects/<project_id>/stories/<story_id>
+    Then I expect status code 204
