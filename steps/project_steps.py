@@ -25,6 +25,5 @@ def step_impl(context, status_code):
 @when(u'I save the project id as <project_id>')
 def step_impl(context):
     context.project_response = context.response
-    print("project response", context.project_response.json())
 
 
