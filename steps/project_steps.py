@@ -8,9 +8,9 @@ from utils.utils import convert_table_to_dictionary, map_url
 use_step_matcher("re")
 
 
-@then(u'I expect the project response should contain the following info')
+@then(u'I expect the project response should contain the created project data')
 def step_impl(context):
-    project_data = json.loads(context.text)
+    project_data = context.object_data
     for key in project_data:
         expect(context.project_response.json()[key]).to_equal(project_data[key])
 
@@ -28,6 +28,7 @@ def step_impl(context):
     for index, row_data in enumerate(context.data_table):
         for key in row_data:
             expect(project_result_list[index][key]).to_equal(row_data[key])
+
 
 @then(u'I expect the response result list should be (.*)')
 def step_impl(context, records_number):

@@ -19,19 +19,7 @@ Feature:
     """
     And I save the response as project_response
     Then I expect status code 200
-    And I expect the project response should contain the following info
-      """
-        {
-          "name" : "project crud-01",
-          "project_type": "demo",
-          "public": false,
-          "iteration_length": 1,
-          "week_start_day": "Monday",
-          "point_scale": "0,1,2,3",
-          "start_date":  "2017-11-27",
-          "initial_velocity":10
-        }
-        """
+      And I expect the project response should contain the created project data
 
   @delete_project
   Scenario: CRUD - Verify Project List for created project

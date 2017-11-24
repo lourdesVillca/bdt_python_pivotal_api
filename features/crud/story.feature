@@ -25,12 +25,4 @@ Feature:
       """
     And I save the response as story_response
     Then I expect status code 200
-      And I expect the story response should contain the following info
-      """
-        {
-          "name": "Story crud-01",
-          "current_state": "started",
-          "story_type": "feature",
-          "estimate": 2
-        }
-      """
+      And I expect the story response should contain the created story data
