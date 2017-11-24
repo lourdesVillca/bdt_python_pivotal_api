@@ -31,20 +31,3 @@ Feature:
   Scenario: Delete Projects
     When I send a DELETE request to projects/<project_id>
     Then I expect status code 204
-
-  @delete_project
-  Scenario: CRUD test
-    When I send a POST request to projects
-    """
-    {
-      "name" : "project crud-01"
-    }
-    """
-    And I save the response as project_response
-    Then I expect status code 200
-    And I should expect the following project result
-    """
-    {
-      "name" : "project crud-01"
-    }
-    """

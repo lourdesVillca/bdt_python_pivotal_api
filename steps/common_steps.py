@@ -15,6 +15,7 @@ def step_impl(context, method, end_point):
     else:
         context.response = context.request_api.execute_request(method, map_url(end_point, context))
 
+
 @then(u'I expect status code (.*)')
 def step_impl(context, status_code):
     expect(str(context.response.status_code)).to_equal(status_code)
