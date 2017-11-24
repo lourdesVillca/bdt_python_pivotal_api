@@ -1,7 +1,10 @@
+@project
+@projects_crud
 Feature:
   As a user to pivotal tracker
   I want to test the CRUD validations for Project Endpoints
 
+  @crud
   @delete_project
   Scenario: CRUD - Verify data info for created project
     When I send a POST request to projects
@@ -19,8 +22,9 @@ Feature:
     """
     And I save the response as project_response
     Then I expect status code 200
-      And I expect the project response should contain the created project data
+    And I expect the project response should contain the created project data
 
+  @crud
   @delete_project
   Scenario: CRUD - Verify Project List for created project
     Given I send a POST request to projects with table
@@ -30,4 +34,4 @@ Feature:
 
     When I send a GET request to projects
     Then I expect the response should contains all created projects
-      And I expect the response result list should be 2
+    And I expect the response result list should be 2

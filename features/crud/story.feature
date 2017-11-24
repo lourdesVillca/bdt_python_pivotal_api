@@ -1,3 +1,5 @@
+@story
+@story_crud
 Feature:
   As a user to pivotal tracker
   I want to test the CRUD validations for Story Endpoints
@@ -25,4 +27,4 @@ Feature:
       """
     And I save the response as story_response
     Then I expect status code 200
-      And I expect the story response should contain the created story data
+    And I expect the story response should contain the created story data

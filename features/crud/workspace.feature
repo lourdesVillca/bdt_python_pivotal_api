@@ -1,5 +1,8 @@
-# Created by LuLy at 24/11/2017
-Feature: #Enter feature name here
+@crud
+@workspace
+Feature: As a user to pivotal tracker
+  I want to test the CRUD validations for workspace Endpoints
+
   Background: Create a workspaces
     When I send a POST request to projects
     """
@@ -7,7 +10,7 @@ Feature: #Enter feature name here
       "name" : "workspace-project01"
     }
     """
-      And I save the response as project_response
+    And I save the response as project_response
     When I send the POST request to my/workspaces
     """
     {
@@ -15,10 +18,10 @@ Feature: #Enter feature name here
       "project_ids":[workspace-project01]
     }
     """
-      And I save the response as workspace_response
+    And I save the response as workspace_response
     Then I expect status code 200
 
-  @crud @delete_workspace
+  @delete_workspace
   Scenario: The workspace created with a specific name and contains a specific project
     When I send a GET request to my/workspaces
     Then the workspace created should contain the following data

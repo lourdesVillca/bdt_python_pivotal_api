@@ -1,4 +1,5 @@
-# Created by Alvaro at 22/11/2017
+@smoke
+@workspace
 Feature:  As a user to pivotal tracker
   I want to test the CRUD validations for Workspace Endpoints
 
